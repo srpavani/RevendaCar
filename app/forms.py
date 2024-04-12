@@ -1,7 +1,7 @@
 from django import forms 
 from app.models import CarroModel, Brand
 
-
+'''
 class CarForm(forms.Form):
   model = forms.CharField(max_length=200)
   brand = forms.ModelChoiceField(Brand.objects.all())
@@ -22,3 +22,8 @@ class CarForm(forms.Form):
       )
       car.save()
       return car
+  '''
+class CarModelForm(forms.ModelForm):
+     class Meta:
+         model = CarroModel
+         fields = '__all__'
