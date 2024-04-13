@@ -19,9 +19,11 @@ from django.urls import path
 from django.conf import settings 
 from django.conf.urls.static import static
 from app.views import cars_view, new_car_view
+from accounts.views import register_view
 
 
 urlpatterns = [
+    path('register/', register_view, name='user_form'),
     path('admin/', admin.site.urls),
     path('cars/', cars_view, name='cars_list'),
     path('new_car/', new_car_view, name='new_car')
