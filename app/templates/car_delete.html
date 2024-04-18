@@ -1,9 +1,8 @@
 {% extends "base.html" %}
-
 {% block content %}
-
-
 <style>
+
+    
     .car-card {
             background-color: #e3e1e1;
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -77,21 +76,29 @@
 
 </style>
 
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Deletar carro</h1>
+    </div>
+    <div class="card-body">
+        <p>tem certeza que deseja deletar o carro <strong>{{ object.brand }}  {{ object.model }}</strong></p>
 
-<div class="car-card">
-<img src="{{ object.photo.url }}" alt=" {{ object.model }} - {{ object.brand }}">
-<h2>{{ object.brand }} {{ object.model }}</h2>
-<p><strong>Ano de fabricacao:</strong>{{ object.factory_year }}</p>
-<p><strong>Ano do modelo:</strong>{{ object.model_year }}</p>
-<p><strong>placa:</strong>{{ object.plate }}</p>
-<p><strong>Preco:</strong>{{ object.value }}</p>
+    </div>
 </div>
 
-{% if user.is_authenticated %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
 <div class="buttons-container">
-    <a href="{% url 'car_update' pk=object.pk %}" class="btn btn-primary">editar</a>
-    <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">excluir</a>
+    <button type="submit" class="btn btn-danger">Deletar Carro</button>
+    <a href="{% url 'car_update' pk=object.pk %}" class="btn btn-secondary">Cancelar</a>
 </div>
-{% endif %}
+
+
+
+
+</div>
+</div>
+
 
 {% endblock %}

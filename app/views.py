@@ -5,7 +5,9 @@ from django.shortcuts import redirect, render
 from app.models import CarroModel
 from app.forms import CarModelForm
 from django.views import View
-from django.views.generic import ListView, CreateView, DetailView, UpdateView 
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView 
+from django.urls import reverse_lazy
+
 #from app.forms import CarForm
 
 class CarListView(ListView):
@@ -36,7 +38,19 @@ class CarUpdateView(UpdateView):
     model=CarroModel 
     form_class = CarModelForm
     template_name = 'car_update.html'
-    success_url = '/cars/'  
+    def get_success_url(self):
+        return reverse_lazy('car_detail', kwargs={'pk': self.object.pk})
+    
+class CarDeleteView(DeleteView):
+    model=CarroModel
+    template_name= 'car_delete.html'
+    success_url = '/cars'
+    
+    
+    
+    
+    
+          
     
     
     
