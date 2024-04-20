@@ -2,7 +2,7 @@ from django.db.models.signals import pre_save, pre_delete, post_save, post_delet
 from django.dispatch import receiver
 from app.models import CarroModel, CarInvetory
 from django.db.models import Sum
-#from openai_api.client import get_car_ai_bio 
+
 
 def car_invetory_update():
     cars_count = CarroModel.objects.all().count()#conta quantos carros cadastrados existem no bd
